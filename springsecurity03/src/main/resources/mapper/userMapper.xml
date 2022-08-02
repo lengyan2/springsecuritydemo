@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springsecurity03.dao.UserDao">
+
+
+    <select id="loadUserByUsername" resultType="com.example.springsecurity03.entity.User">
+        select  * from user where username=#{username}
+    </select>
+    <select id="getRoleListByUid" resultType="com.example.springsecurity03.entity.Role">
+        select  r.id,r.name,r.name_zh from `role` r , user_role ur
+        where r.id = ur.rid and ur.uid = #{uid}
+    </select>
+
+</mapper>
